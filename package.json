@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.4.0"
+  },
+  "name": "social-network-api",
+  "description": "A No-SQL social networking app api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RJimenezTech/social-network-api.git"
+  },
+  "author": "Robert Jimenez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RJimenezTech/social-network-api/issues"
+  },
+  "homepage": "https://github.com/RJimenezTech/social-network-api#readme"
+}
