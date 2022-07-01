@@ -59,30 +59,14 @@ const userController = {
       .catch((err) => res.json(err));
   },
 
-  // get all thoughts
-  getThoughts(req, res) {
-    User.find({})
-      .populate({
-        path: "thoughts",
-        select: "-__v",
-      })
-      .select("-__v")
-      .sort({ _id: -1 })
-      .then((dbUserData) => res.json(dbUserData))
-      .catch((err) => {
-        console.log(err);
-        res.sendStats(400);
-      });
-  },
-
   // add friend to a user
   // api/users/:userId/friends/:friendId
-  addFriend({ params, body }, res) {
-    User.findOneAndUpdate({ _id: params.userId }, body, {
-      $push: { friends: params.friendsId },
-      new: true,
-      runValidators: true,
-    })
+  addFriend({ params }, res) {
+    User.findOneAndUpdate(
+      { _id: params.userId },
+      { $push: { friends: params.friendsId } },
+      { new: true }
+    )
       .then((dbUserData) => {
         if (!dbUserData) {
           res.status(404).json({ message: "No user found with this id!" });
@@ -90,6 +74,17 @@ const userController = {
         }
         res.json(dbUserData);
       })
+      .catch((err) => res.json(err));
+  },
+
+  // delete friend
+  removeFriend({ params }, res) {
+    User.findOneAndUpdate(
+      { _id: params.userId },
+      { $pull: { friends: params.friendsId } },
+      { new: true }
+    )
+      .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.json(err));
   },
 
