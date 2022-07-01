@@ -3,19 +3,22 @@ const dateFormat = require("../utils/dateFormat");
 
 const UserSchema = new Schema(
   {
-    userName: {
+    username: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
       trim: true,
     },
     email: {
       type: String,
       required: true,
-      unique: true,
-      trim: true,
+      // unique: true,
       validate: {
-        validator: () => Promise.resolve(false),
+        validator: function (E) {
+          return /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+            E
+          );
+        },
         message: "Email validation failed",
       },
     },
@@ -33,7 +36,7 @@ const UserSchema = new Schema(
     friends: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Friend",
+        ref: "User",
       },
     ],
   },
