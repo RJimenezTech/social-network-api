@@ -24,6 +24,8 @@ Clone the repository to your local machine.
 
 Enter "npm start" in the command line. The API calls are in the routes folder and in the video below. Using an API design tool, like Insomnia, a user can test the routes on their local machine before adding to or implementing this backend for their application.
 
+Check a demo of the application here: [DEMO](https://youtu.be/h1hp_UufDTk)
+
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT)
